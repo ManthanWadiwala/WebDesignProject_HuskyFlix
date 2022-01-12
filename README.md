@@ -10,7 +10,7 @@
 |001001191 | Varada Kulkarni | kulkarni.va@northeastern.edu
 
 # Name of the Project 
-Husky-FLIX (A Movie App)
+Husky-FLIX (A Movie Recommendation App)
 
 # Guidelines
 1. The project should have some form of create, read, update and delete (CRUD) operations.
