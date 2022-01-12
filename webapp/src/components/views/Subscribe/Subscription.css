@@ -1,0 +1,20 @@
+.subscription
+{ 
+    
+    font-size: 2rem; 
+    height: '500px';
+     display: 'flex';
+     flex-direction: 'column';
+     justify-content: 'center';   
+     align-items: 'center' ;
+     margin-left: 40%;
+
+}
+
+.mainDiv{
+    width: '85%';
+    margin: '3rem auto';
+    margin-top: 1%;
+    margin-left: 1%
+}
+  

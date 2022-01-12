@@ -1,0 +1,44 @@
+import React, { Suspense } from 'react';
+import { Route, Switch } from "react-router-dom";
+import Auth from "../hoc/auth";
+// pages for this product
+import LandingPage from "./views/LandingPage/LandingPage.js";
+import LoginPage from "./views/LoginPage/LoginPage.js";
+import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+import NavBar from "./views/NavBar/NavBar";
+import Footer from "./views/Footer/Footer"
+import MovieDetail from "./views/MovieDetail/MovieDetail"
+import FavoritePage from "./views/FavoritePage/FavoritePage"
+import Subscribe from './views/Subscribe/Checkout';
+import Subscription from './views/Subscribe/Subscription';
+import Checkout from './views/Subscribe/Checkout';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_51K2nFKI3nGDAQpN4kUB5Eze7YikzHZuPAoMsXggN3elK1ffV60tlkxHtnWvLWHesENrgzGbRK2sXzgPUDdCtUx7q00Msap2YzJ");
+
+
+function App() {
+  return (
+    <Elements stripe={stripePromise}>
+    <Suspense fallback={(<div>Loading...</div>)}>
+      <NavBar />
+      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+        <Switch>
+          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
+          <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
+          <Route exact path="/subscribe" component={Auth(Subscribe, null)} />
+          <Route exact path="/checkout" component={Auth(Checkout, null)} />
+          <Route exact path="/subscription" component={Auth(Subscription, null)} />
+        </Switch>
+      </div>
+      <Footer />
+    </Suspense>
+    </Elements>
+  );
+}
+
+export default App;
